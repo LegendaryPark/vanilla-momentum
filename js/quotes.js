@@ -1,75 +1,8 @@
-const categories = [
-  "age",
-  "alone",
-  "amazing",
-  "anger",
-  "architecture",
-  "art",
-  "attitude",
-  "beauty",
-  "best",
-  "birthday",
-  "business",
-  "car",
-  "change",
-  "communications",
-  "computers",
-  "cool",
-  "courage",
-  "dad",
-  "dating",
-  "death",
-  "design",
-  "dreams",
-  "education",
-  "environmental",
-  "equality",
-  "experience",
-  "failure",
-  "faith",
-  "family",
-  "famous",
-  "fear",
-  "fitness",
-  "food",
-  "forgiveness",
-  "freedom",
-  "friendship",
-  "funny",
-  "future",
-  "god",
-  "good",
-  "government",
-  "graduation",
-  "great",
-  "happiness",
-  "health",
-  "history",
-  "home",
-  "hope",
-  "humor",
-  "imagination",
-  "inspirational",
-  "intelligence",
-  "jealousy",
-  "knowledge",
-  "leadership",
-  "learning",
-  "legal",
-  "life",
-  "love",
-  "marriage",
-  "medical",
-  "men",
-  "mom",
-  "money",
-  "morning",
-  "movies",
-  "success",
-];
+import { quote_categories } from "../constants/categories.js";
+import randomNumber from "../utils/random_number.js";
 
 function getQuote() {
-  const category = categories[Math.floor(Math.random() * categories.length)];
+  const category = quote_categories[randomNumber(quote_categories.length)];
 
   fetch(`https://api.api-ninjas.com/v1/quotes?category=${category}`, {
     method: "GET",
@@ -82,7 +15,7 @@ function getQuote() {
       const author = document.querySelector("div#author");
 
       quote.innerText = result[0].quote;
-      author.innerText = result[0].author;
+      author.innerText = `- ${result[0].author}`;
     });
 }
 

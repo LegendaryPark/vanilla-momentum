@@ -1,10 +1,14 @@
-const MAX_NUMBER = 8000;
+import { WHITE, BLACK } from "../constants/colors.js";
+import { image_categories } from "../constants/categories.js";
+import randomNumber from "../utils/random_number.js";
+
 const body = document.querySelector("body");
 
 function getWallpaper() {
-  const page = Math.floor(Math.random() * MAX_NUMBER);
+  const page = randomNumber(8000);
+  const category = image_categories[randomNumber(image_categories.length)];
   fetch(
-    `https://api.pexels.com/v1/search?query=nature&per_page=1&page=${page}`,
+    `https://api.pexels.com/v1/search?query=${category}&per_page=1&page=${page}`,
     {
       method: "GET",
       headers: {
@@ -40,9 +44,9 @@ function setTextColorByImageBrightness(color) {
   var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
   if (luma < 150) {
-    body.style.color = "white";
+    body.style.webkitTextFillColor = WHITE;
   } else {
-    body.style.color = "black";
+    body.style.webkitTextFillColor = BLACK;
   }
 }
 

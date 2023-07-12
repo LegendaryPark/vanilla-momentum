@@ -13,6 +13,7 @@ function deleteTodo(event) {
   todos = todos.filter((item) => item.id !== parseInt(targetListItem.id));
   saveTodos();
 }
+
 function paintTodo(newTodoObj) {
   const listItem = document.createElement("li");
   listItem.id = newTodoObj.id;
@@ -22,11 +23,12 @@ function paintTodo(newTodoObj) {
   button.innerText = "X";
   span.innerText = newTodoObj.text;
 
-  listItem.appendChild(button);
   listItem.appendChild(span);
+  listItem.appendChild(button);
   button.addEventListener("click", deleteTodo);
   todoList.appendChild(listItem);
 }
+
 function handleTodoSubmit(event) {
   event.preventDefault();
   const newTodo = todoInput.value;

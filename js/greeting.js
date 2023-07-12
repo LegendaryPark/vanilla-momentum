@@ -15,15 +15,26 @@ function onLoginSubmit(event) {
 }
 
 function showGreetings(username) {
+  const timelyGreeting = getGreetings();
+
   greeting.classList.remove(HIDDEN_CLASSNAME);
-  greeting.innerText = `Hello ${username}`;
+  greeting.innerText = `${timelyGreeting} ${username}`;
 }
 
-// function handleLinkClicked(event) {
-//   event.preventDefault(); // prevent going to a website
-// }
+function getGreetings() {
+  const date = new Date();
+  const time = date.getHours();
 
-// link.addEventListener("click", handleLinkClicked);
+  if (time >= 4 && time < 12) {
+    return "Good Morning";
+  } else if (time >= 12 && time <= 16) {
+    return "Good Afternoon";
+  } else if (time >= 16 && time <= 23) {
+    return "Good Evening";
+  } else {
+    return "Good Night";
+  }
+}
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 

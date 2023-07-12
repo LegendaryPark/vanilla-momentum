@@ -39,7 +39,7 @@ body {
 }
 
 #greeting {
-  font-size: 7em;
+  font-size: 6em;
 }
 
 #clock {
@@ -52,7 +52,7 @@ body {
 }
 
 #quote {
-  margin: 0 100px;
+  margin: 0px 100px;
 }
 
 #author {
